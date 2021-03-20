@@ -14,14 +14,20 @@
 <!--      </li>-->
 <!--      <li>Book 3</li>-->
     </ul>
-
+  <book-form @addBook="appendBook"></book-form>
   </div>
 </template>
 <script>
 import BookItem from "./BookItem";
+import BookForm from "./BookForm";
 export default {
   name: 'BookList',
-  components: {BookItem},
+  components: {BookForm, BookItem},
+  methods: {
+    appendBook(bookTitle, bookAuthor){
+      this.books.push({ title: bookTitle, author: bookAuthor })
+    }
+  },
   data: function () {
     return {
       title: 'All Books', books: [
